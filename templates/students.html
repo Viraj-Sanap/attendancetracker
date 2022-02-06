@@ -1,0 +1,70 @@
+
+{% extends "layout.html" %}
+
+{% block title %}
+Mark
+{% endblock %}
+
+{% block main %}
+
+<details>
+  <summary>Add Student</summary>
+    <form action="/students" method="post">
+
+      <div class="form-group">
+        <select name="division" class="form-control">
+          <option disabled selected value>Division</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <input autocomplete="off" autofocus class="form-control" name="s_id" placeholder="Student ID" type="text"
+               style="width:300px" required>
+      </div>
+
+      <div class="form-group">
+        <input autocomplete="off" class="form-control" name="student_name" placeholder="Student Name" type="text" style="width:300px" required>
+      </div>
+
+      <button class="btn btn-dark" type="submit" style="width:300px">Add Student</button>
+      <br><br>
+    </form>
+</details>
+
+<details>
+  <summary>Remove Student</summary>
+    <form action="/students" method="post">
+      <div class="form-group">
+        <select name="symbol" class="form-control">
+          <option disabled selected value>Student</option>
+          {% for student in students %}
+          <option value="{{student.div}} {{student.s_id}}">{{student.div}}-{{student.s_id}} {{student.student_name}}</option>
+
+          {% endfor %}
+        </select>
+      </div>
+      <button class="btn btn-dark" type="submit" style="width:300px">Delete Student</button>
+    </form>
+</details>
+<br>
+
+<table class="table table-striped">
+  <thead>
+    <th>Roll No.</th>
+    <th>Student Name</th>
+    <th>Division</th>
+  </thead>
+  <tbody>
+    {% for student in students %}
+    <tr>
+      <td>{{student.div}}-{{student.s_id}}</td>
+      <td>{{student.student_name}}</td>
+      <td>{{student.div}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

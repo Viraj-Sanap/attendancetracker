@@ -1,0 +1,93 @@
+
+{% extends "layout.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block main %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+<div ng-app="">
+
+    <form action="/mark" method="post">
+
+        <div class="form-group">
+            <input type="checkbox" ng-model="A" name="A" value="A"> Division A
+        </div>
+
+        <div class="form-group">
+            <input type="checkbox" ng-model="B" name="B" value="B"> Division B
+        </div>
+
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="date" placeholder="Date" type="date"
+                   style="width:300px" required ng-model="date">
+        </div>
+
+        <br><br>
+
+    <div ng-show="A">
+            <table class="table table-striped">
+              <thead>
+                <th>Roll No.</th>
+                <th>Student Name</th>
+                <th>Division</th>
+                <th>Status</th>
+              </thead>
+              <tbody>
+                {% for studentA in studentsA %}
+                <tr>
+                  <td>{{studentA.div}}-{{studentA.s_id}}</td>
+                  <td>{{studentA.student_name}}</td>
+                  <td>{{studentA.div}}</td>
+                  <td>
+                      <select name="status" class="form-control">
+                          <option selected value="{{studentA.div}} {{studentA.s_id}} Present">Present</option>
+                          <option value="{{studentA.div}} {{studentA.s_id}} Absent">Absent</option>
+                      </select>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        <br><hr>
+    </div>
+
+
+
+    <div ng-show="B">
+            <table class="table table-striped">
+              <thead>
+                <th>Roll No.</th>
+                <th>Student Name</th>
+                <th>Division</th>
+                <th>Status</th>
+              </thead>
+              <tbody>
+                {% for studentB in studentsB %}
+                <tr>
+                  <td>{{studentB.div}}-{{studentB.s_id}}</td>
+                  <td>{{studentB.student_name}}</td>
+                  <td>{{studentB.div}}</td>
+                  <td>
+                      <select name="status" class="form-control">
+                          <option selected value="{{studentB.div}} {{studentB.s_id}} Present">Present</option>
+                          <option value="{{studentB.div}} {{studentB.s_id}} Absent">Absent</option>
+                      </select>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+    </div>
+
+        <button class="btn btn-dark" type="submit" style="width:300px">Mark Attendance</button>
+    </form>
+
+</div>
+
+<br>
+
+{% endblock %}

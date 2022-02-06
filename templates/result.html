@@ -1,0 +1,51 @@
+
+{% extends "layout.html" %}
+
+{% block title %}
+Monthly Attendance
+{% endblock %}
+
+{% block main %}
+Division = {{division}}<br>
+Attendance Period = {{month}}, {{year}}<br><br>
+
+
+<table class="table table-striped">
+    <thead>
+        <th>Roll No.</th>
+        <th>Student Name</th>
+        <th>Division</th>
+        <th>Days Present</th>
+        <th>Days Absent</th>
+    </thead>
+    <tbody>
+    <tr>
+        <td>A-001</td>
+        <td>Anushka Kohli</td>
+        <td>A</td>
+        <td>5</td>
+        <td>2</td>
+    </tr>
+
+    <tr>
+        <td>A-002</td>
+        <td>Rathin Shah</td>
+        <td>A</td>
+        <td>1</td>
+        <td>6</td>
+    </tr>
+
+    <tr>
+        <td>A-003</td>
+        <td>Viraj Rajendra Sanap</td>
+        <td>A</td>
+        <td>2</td>
+        <td>0</td>
+    </tr>
+
+    </tbody>
+</table>
+
+
+
+{% endblock %}
