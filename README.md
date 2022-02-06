@@ -46,3 +46,8 @@
 
 *Logout option is present on all pages.
 
+### Backend
+- All the Create Table queries are in the funtions.py.
+- Backend database is in SQLite3.
+- DB Browser was used to check data.
+- All other Insert, Update and Delete queries are integrated in application.py.
